@@ -1,6 +1,21 @@
 import requests
 
+def adres_kontrol(adres):
+    geçerli_karakterler = "123456789ABCDEFGHJKLMNPQRSTUVWXYZabcdefghijkmnopqrstuvwxyz"
+
+    if not (26<= len(adres) <=42):
+        return False
+    if not(adres.startswith("1") or adres.startswith("3")or adres.startswith("bc1")):
+        return False
+    for karakter in adres:
+        if karakter not in geçerli_karakterler:
+            return False
+    return True
+
 def cüzdan_bakiye_sorgulama(adres):
+    if not adres_kontrol(adres):
+        print("Geçersiz cüzdan adresi girdiniz.")
+        return
     try:
         url = f"https://blockchain.info/rawaddr/{adres}"
         response = requests.get(url)
@@ -27,5 +42,10 @@ def cüzdan_bakiye_sorgulama(adres):
     except Exception as e:
         print(f"Beklenmeyen bir hata oluştu: {e}")
 
-cüzdan_adresi = input("Lütfen cüzdan adresini girin: ")
-cüzdan_bakiye_sorgulama(cüzdan_adresi)
+while True:
+    cüzdan_adresi = input("Lütfen cüzdan adresini girin: ")
+    if adres_kontrol(cüzdan_adresi):
+        cüzdan_bakiye_sorgulama(cüzdan_adresi)
+        break
+    else:
+        print("Geçersiz cüzdan adresi.Lütfen kontrol edip tekrar giriniz.")
