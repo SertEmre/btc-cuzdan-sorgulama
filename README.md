@@ -1,13 +1,12 @@
-Bu Python projesi, kullanıcıdan alınan bir Bitcoin cüzdan adresi ile Blockchain.info API'sini kullanarak aşağıdaki bilgileri döndürür:
+Bu proje, bir Bitcoin cüzdan adresinin bakiyesini sorgulayan bir Python uygulamasıdır. Kullanıcı, geçerli bir cüzdan adresi girerek cüzdan bakiyesi, işlem sayısı, gelen ve gönderilen BTC miktarlarını öğrenebilir.
 
-- Toplam bakiye (BTC cinsinden)
-- Toplam işlem sayısı
-- Toplam gelen BTC miktarı
-- Toplam gönderilen BTC miktarı
+Cüzdan adresine ait bakiye, işlem sayısı, toplam gelen ve gönderilen BTC miktarlarını API üzerinden sorgulama.
 
-- API: [blockchain.info/rawaddr](https://blockchain.info/rawaddr)
-- Bakiye ve transfer bilgileri satoshi cinsinden döner; okunabilirlik için BTC'ye çevrilir (`/ 1e8`).
+adres_kontrol(adres): Verilen Bitcoin cüzdan adresinin geçerliliğini kontrol eder. Adresin uzunluğu 26 ile 42 karakter arasında olmalı ve geçerli Bitcoin adres formatlarına uymalıdır.
 
-## Lisans
+cüzdan_bakiye_sorgulama(adres): Geçerli bir Bitcoin cüzdan adresini sorgular ve API üzerinden cüzdan bakiyesi, işlem sayısı, gelen ve gönderilen BTC bilgilerini getirir.
 
-MIT Lisansı
+API Kaynağı: blockchain.info API'si üzerinden cüzdan verileri alınır.
+
+Lisans
+Bu proje MIT Lisansı ile lisanslanmıştır. Detaylı bilgi için LICENSE dosyasına bakabilirsiniz.
